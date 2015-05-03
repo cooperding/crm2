@@ -1,0 +1,41 @@
+<form action="{:U('Admin/Members/update')}" class="form_dogocms" method="post">
+    <input type="hidden" name="id" value="{$data.id}" />
+    <div class="division">
+        <table>
+            <tbody>
+                <tr>
+                    <th>用户名：</th>
+                    <td><input type="text" name="username" value="{$data.username}" data-options="required:true" class="easyui-validatebox"/><span class="red">*用户名</span></td>
+                </tr>
+                <tr>
+                    <th>邮箱：</th>
+                    <td><input type="text" name="email" value="{$data.email}" data-options="required:true" class="easyui-validatebox"/><span class="red">*邮箱</span></td>
+                </tr>
+                <tr>
+                    <th>性别：</th>
+                    <td><html:radio name="sex" radios="sex"  checked="v_sex"/></td>
+            </tr>
+
+            <tr>
+                <th>注册时间：</th>
+                <td>{$data.addtime|date="Y-m-d H:i:s",###}</td>
+            </tr>
+            <tr>
+                <th>注册ip：</th>
+                <td>{$data.ip}</td>
+            </tr>
+            <tr>
+                <th>密码：</th>
+                <td><input type="text" name="password" value=""/><span class="red">*密码为空不修改无变化</span></td>
+            </tr>
+            <tr>
+                <th>状态：</th>
+                <td><html:radio name="status" radios="status"  checked="v_status"/></td>
+            </tr>
+            <tr>
+                <th>备注：</th><td><textarea name="remark" rows="3" cols="30">{$data.remark}</textarea><span class="red"></span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</form>

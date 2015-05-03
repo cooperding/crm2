@@ -1,0 +1,107 @@
+<form action="{:U('Admin/News/update')}" class="form_dogocms" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="{$data.id}" />
+    <div class="division">
+        <table>
+            <tbody>
+                <tr>
+                    <th>文档标题：</th>
+                    <td><input type="text" name="title" value="{$data.title}"/></td>
+                </tr>
+                <tr>
+                    <th>文档副标题：</th>
+                    <td><input type="text" name="subtitle" value="{$data.subtitle}" /></td>
+                </tr>
+                <tr>
+                    <th>文档属性：</th>
+                    <td>
+            <php>
+                $arr = explode(',',$data['flag']);
+                foreach($flag as $k=>$v){
+                if(in_array($k,$arr)){
+                echo '<input name="flag[]" type="checkbox" value="'.$k.'" checked="checked"/>'.$v;
+                }else{
+                echo '<input name="flag[]" type="checkbox" value="'.$k.'"/>'.$v;
+                }
+                }
+            </php>
+            <html:checkbox name="flag" checkboxes="" checked="" /></td>
+            </tr>
+            <tr>
+                <th>文档分类：</th>
+                <td><input name="sort_id" class="easyui-combotree combotree" data-options="url:'{:U('Admin/NewsSort/jsonTree')}',required:true," value="{$data.sort_id}"  style="width:200px;" /><span class="red">*请先选择文档分类</span></td>
+            </tr>
+            <tr>
+                <th>文档标题图：</th>
+                <td>
+                    <input type="text" id="url1" name="titlepic" value="{$data.titlepic}" />
+                    <input type="button" id="image1" value="选择图片" />
+                </td>
+            </tr>
+            <if condition="$data['titlepic'] neq ''">
+                <tr>
+                    <th></th>
+                    <td><img src="{$data['titlepic']}" style="width: 300px;height:auto;"/></td>
+                </tr>
+            </if>
+            <tr>
+                <th>关键词：</th>
+                <td><input type="text" name="keywords" value="{$data.keywords}" /></td>
+            </tr>
+            <tr>
+                <th>描述简介：</th>
+                <td><textarea name="description" rows="3" cols="30">{$data.description}</textarea></td>
+            </tr>
+            <tr>
+                <th>发布时间：</th>
+                <td>{$data.addtime|date="Y-m-d H:i:s",###}</td>
+            </tr>
+            <tr>
+                <th>更新时间：</th>
+                <td>{$data.updatetime|date="Y-m-d H:i:s",###}</td>
+            </tr>
+            <tr>
+                <th>审核状态：</th>
+                <td><html:radio name="status" radios="status" checked="v_status"/></td>
+            </tr>
+            <tr>
+                <th>文档内容：</th>
+                <td>
+                    <textarea id="content" name="content" style="width:720px;height:400px;visibility:hidden;">{$data.content|stripslashes}</textarea>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</form>
+<script>
+    $(function() {
+        KindEditor.create('#content', {
+            themeType: 'simple',
+            allowFileManager: true,
+            uploadJson: '{:U("Admin/Upload/uploadImg")}',
+            fileManagerJson: '{:U("Admin/Upload/fileManagerJson")}',
+            afterBlur: function() {
+                this.sync();
+            }
+        });
+        var editor = KindEditor.editor({
+            allowFileManager: true,
+            uploadJson: '{:U("Admin/Upload/uploadImg")}',
+            fileManagerJson: '{:U("Admin/Upload/fileManagerJson")}'
+        });
+        KindEditor('#image1').click(function() {
+            editor.loadPlugin('image', function() {
+                editor.plugin.imageDialog({
+                    imageUrl: KindEditor('#url1').val(),
+                    clickFn: function(url, title, width, height, border, align) {
+                        KindEditor('#url1').val(url);
+                        editor.hideDialog();
+                    }
+                });
+            });
+        });
+
+    });
+</script>

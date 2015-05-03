@@ -1,0 +1,31 @@
+<form action="{:U('Admin/Pages/sortinsert')}" class="form_dogocms" method="post">
+    <div class="division">
+        <table>
+            <tbody>
+                <tr>
+                    <th>名称：</th>
+                    <td><input type="text" name="ename" data-options="required:true" class="easyui-validatebox"/><span class="red">*</span></td>
+                </tr>
+                <tr>
+                    <th>上级分组名：</th>
+                    <td><input name="parent_id" class="easyui-combotree combotree" data-options="url:'{:U('Admin/Pages/jsonTree')}',required:true"  value="0"  style="width:200px;"></td>
+                </tr>
+                <tr>
+                    <th>状态：</th>
+                    <td><html:radio name="status" radios="status" checked="20" /></td>
+            </tr>
+            
+            <tr>
+                <th>关键词：</th>
+                <td><input type="text" name="keywords" value="{$data.keywords}" /></td>
+            </tr>
+            <tr>
+                <th>描述简介：</th>
+                <td><textarea name="description" rows="3" cols="30">{$data.description}</textarea></td>
+            </tr>
+            <tr>
+                <th>{:L("orderby")}：</th><td><input type="text" name="myorder" value="{$data.myorder}" /></td>
+            </tr>
+            </tbody>
+        </table></div>
+</form>

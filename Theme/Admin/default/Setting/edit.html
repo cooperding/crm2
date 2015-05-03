@@ -1,0 +1,32 @@
+<form action="{:U('Admin/Setting/update')}" class="form_dogocms" method="post">
+    <input type="hidden" name="id" value="{$data.id}" />
+    <div class="division">
+        <table>
+            <tbody>
+                <tr>
+                    <th>变量名：</th>
+                    <td><input type="text" name="sys_name" value="{$data.sys_name}" data-options="required:true" class="easyui-validatebox"/><span class="red">*请以 cfg_ 开头</span></td>
+                </tr>
+                <tr>
+                    <th>所属分组：</th>
+                    <td>
+                        <input name="sys_gid" class="easyui-combotree combotree" data-options="url:'{:U('Admin/Setting/jsonTree')}',required:true," value="{$data.sys_gid}" style="width:200px;"/>
+                    </td>
+                </tr>
+                <tr>
+                    <th>变量类型：</th>
+                    <td><html:radio name="sys_type" radios="radios" checked="sys_type"/></td>
+            </tr>
+            <tr>
+                <th>参数值：</th><td><textarea name="sys_value" rows="3" cols="30">{$data.sys_value|stripslashes}</textarea><span class="red">*选择布尔值输入是：1/否：2</span></td>
+            </tr>
+            <tr>
+                <th>参数说明：</th><td><input type="text" name="sys_info" value="{$data.sys_info}" /></td>
+            </tr>
+            <tr>
+                <th>排序：</th><td><input type="text" name="myorder" value="{$data.myorder}" /></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</form>

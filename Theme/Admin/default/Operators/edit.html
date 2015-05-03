@@ -1,0 +1,27 @@
+<form action="{:U('Admin/Operators/update')}" class="form_dogocms" method="post">
+    <input type="hidden" name="id" value="{$data.id}" />
+    <div class="division">
+        <table>
+            <tbody>
+                <tr>
+                    <th>用户名：</th>
+                    <td><input type="text" name="username" value="{$data.username}" data-options="required:true" class="easyui-validatebox"/><span class="red">*用户名</span></td>
+                </tr>
+                <tr>
+                    <th>密码：</th>
+                    <td><input type="text" name="password" value=""/><span class="red">*密码为空不修改无变化</span></td>
+                </tr>
+                <tr>
+                    <th>权限级别：</th>
+                    <td><input name="role_id" class="easyui-combotree combotree" data-options="url:'',required:true"  value="{$data.role_id}"  style="width:200px;"><span class="red">*没有授权操作受限</span></td>
+                </tr>
+                <tr>
+                    <th>状态：</th>
+                    <td><html:radio name="status" radios="status"  checked="v_status"/></td>
+            </tr>
+            <tr>
+                <th>备注：</th><td><textarea name="remark" rows="3" cols="30">{$data.remark}</textarea><span class="red"></span></td>
+            </tr>
+            </tbody>
+        </table></div>
+</form>

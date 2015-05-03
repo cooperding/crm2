@@ -1,0 +1,16 @@
+<form action="{:U('Admin/Links/sortupdate')}" class="form_dogocms" method="post">
+    <input type="hidden" name="id" value="{$data.id}" />
+    <div class="division">
+        <table>
+            <tbody>
+                <tr>
+                    <th>名称：</th>
+                    <td><input type="text" name="ename" value="{$data.ename}" data-options="required:true" class="easyui-validatebox"/><span class="red">*</span></td>
+                </tr>
+                <tr>
+                    <th>状态：</th>
+                    <td><html:radio name="status" radios="status" checked="v_status" /></td>
+            </tr>
+            </tbody>
+        </table></div>
+</form>

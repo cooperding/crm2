@@ -1,0 +1,33 @@
+<form action="{:U('Admin/NavHead/insert')}" class="form_dogocms" method="post">
+    <div class="division">
+        <table>
+            <tbody>
+                <tr>
+                    <th>分类名称：</th>
+                    <td><input type="text" name="text" value="{$data.text}" data-options="required:true" class="easyui-validatebox"/><span class="red">*</span></td>
+                </tr>
+                <tr>
+                    <th>上级分组名：</th>
+                    <td><input name="parent_id" id="combotree" class="easyui-combotree combotree" data-options="url:'{:U('Admin/NavHead/jsonTree')}',required:true"  value="0"  style="width:200px;"/></td>
+                </tr>
+                <tr>
+                    <th>链接地址：</th>
+                    <td><input type="text" name="url" value="{$data.url}" /></td>
+                </tr>
+                <tr>
+                    <th>状态：</th>
+                    <td><html:radio name="status" radios="status" checked="20" /></td>
+            </tr>
+            <tr>
+                <th>{:L("keywords")}：</th>
+                <td><input type="text" name="keywords" value="{$data.keywords}" /></td>
+            </tr>
+            <tr>
+                <th>{:L("description")}：</th><td><textarea name="description" rows="3" cols="30">{$data.description}</textarea><span class="red"></span></td>
+                </tr>
+                <tr>
+                    <th>{:L("orderby")}：</th><td><input type="text" name="myorder" value="{$data.myorder}" /></td>
+                </tr>
+            </tbody>
+        </table></div>
+</form>

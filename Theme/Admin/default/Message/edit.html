@@ -1,0 +1,46 @@
+<form action="{:U('Admin/Message/update')}" class="form_dogocms" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="{$data.id}" />
+    <div class="division">
+        <table>
+            <tbody>
+                <tr>
+                    <th>留言者：</th>
+                    <td>{$data.post_name}</td>
+                </tr>
+                <tr>
+                    <th>留言分类：</th>
+                    <td><input name="sort_id" id="combotree" class="easyui-combotree combotree" data-options="url:'{:U('Admin/Message/jsonTree')}',required:true" value="{$data.sort_id}"  style="width:200px;"></td>
+                </tr>
+                <tr>
+                    <th>留言内容：</th>
+                    <td>{$data.msgcontent}</td>
+                </tr>
+                <tr>
+                    <th>状态：</th>
+                    <td><html:radio name="status" radios="status" checked="v_status" /></td>
+            </tr>
+            <tr>
+                <th>回复内容：</th>
+                <td><textarea id="content" name="replycontent" style="width:720px;height:400px;visibility:hidden;">{$data.replycontent|stripslashes}</textarea></td>
+            </tr>
+
+            </tbody>
+        </table></div>
+</form>
+<script>
+    $(function() {
+
+        KindEditor.create('#content', {
+            themeType : 'simple',
+            allowFileManager : true,
+            uploadJson: '{:U("Admin/Upload/uploadImg")}',
+            fileManagerJson: '{:U("Admin/Upload/fileManagerJson")}',
+            afterBlur : function() {
+                this.sync();
+            }
+        });
+
+
+
+    });
+</script>

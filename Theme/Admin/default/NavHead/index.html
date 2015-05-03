@@ -1,0 +1,34 @@
+<table id="treegrid_navhead">
+
+</table>
+
+<script>
+    function testclick(id) {
+        alert(id);
+    }
+    $(function() {
+        var classId = 'navhead';
+        var urljson = '{:U("Admin/NavHead/json")}';
+        var hrefadd = '{:U("Admin/NavHead/add")}';
+        var hrefedit = '{:U("Admin/NavHead/edit")}';
+        var hrefcancel = '{:U("Admin/NavHead/delete")}';
+        openTreeGrid(classId, urljson, hrefadd, hrefedit, hrefcancel);
+        $('#treegrid_' + classId).treegrid({
+            columns: [[
+                    {field: 'id', title: 'ID', width: 50, align: 'center'},
+                    {field: 'text', title: '导航名称', width: 200},
+                    {field: 'status', title: '状态', width: 50},
+                    //{field:'parent_id',title:'parent_id',width:200},
+                    {
+                        field: 'action',
+                        title: '操作',
+                        width: 50,
+                        formatter: function(value, row, index) {
+                            return '<img class="btn_do" src="__PUBLIC__/Easyui/themes/icons/pencil.png" onclick="ding_edit(\'' + hrefedit + '?id=' + row.id + '\',\'' + classId + '\')"  title="编辑"/>&nbsp;\n\
+<img class="btn_do" src="__PUBLIC__/Easyui/themes/icons/cancel.png" onclick="ding_cancel(\'' + row.id + '\',\'' + hrefcancel + '\',\'' + classId + '\')" title=" 删除"/>&nbsp;';
+                        }
+                    }
+                ]]
+        });
+    });
+</script>

@@ -1,0 +1,63 @@
+<include file="$tpl_header" />
+<div class="container">
+    <div class="dogo-blank"></div>
+    <div class="row">
+        <div class="col-md-3">
+
+            <div class="dogo-sidebar">
+                <include file="$tpl_sidebar" />
+            </div><!--dogo-sidebar-->
+        </div><!--col-md-->
+        <div class="col-md-9">
+            <div class="dogo-member">
+                <h4>我的收货地址</h4>
+                <div class="dogo-blank"></div>
+                <lt name="count_address" value="5">
+                <a href="{:U('User/Index/addressAdd')}"><span class="btn btn-info">添加收货地址</span></a>
+                </lt>
+                <div class="dogo-blank"></div>
+                <table class="table table-hover table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>收货人名称</th>
+                            <th>手机号</th>
+                            <th>地址</th>
+                            <th></th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <foreach name="list" item="vo" key="i">
+                        <tr>
+                            <td>{$i+1}</td>
+                            <td>{$vo.name}</td>
+                            <td>{$vo.telphone}</td>
+                            <td>{$vo.address}</td>
+                            <td>
+                        <if condition="($vo.is_default eq 20)">
+                            默认收货地址
+                        </if>
+                        </td>
+
+                        <td><a href="{:U('User/Index/addressEdit',array('id'=>$vo['id']))}" title="编辑地址"><span class="glyphicon glyphicon-edit"></span></a> / 
+                            <a href="{:U('User/Index/addressDelete',array('id'=>$vo['id']))}" onclick="return confirm('确认要删除该信息吗？');" title="删除地址"><span class="glyphicon glyphicon-remove-circle"></span></a> </td>
+                        </tr>
+                    </foreach>
+                    </tbody>
+                </table>
+
+            </div><!--dogo-member-->
+
+
+
+
+        </div><!--col-md-->
+    </div><!--row-->
+</div><!--container-->
+<include file="$tpl_footer" />
+
+</div><!--dogo-page-->
+
+</body>
+</html>

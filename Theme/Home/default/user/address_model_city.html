@@ -1,0 +1,10 @@
+<select class="form-control" name="city">
+    <option>请选择城市...</option>
+    <foreach name="data" item="vo">
+        <if condition="($check_city_id eq $vo['id'])">
+            <option value="{$vo.id}" selected="selected">{$vo.name}</option>
+            <else/>
+            <option value="{$vo.id}">{$vo.name}</option>
+        </if>
+    </foreach>
+</select>

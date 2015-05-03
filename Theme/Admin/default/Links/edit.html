@@ -1,0 +1,69 @@
+<form action="{:U('Admin/Links/update')}" class="form_dogocms" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="{$data.id}" />
+    <div class="division">
+        <table>
+            <tbody>
+                <tr>
+                    <th>友情链接名称：</th>
+                    <td><input type="text" name="webname" value="{$data.webname}" data-options="required:true" class="easyui-validatebox"/><span class="red">*</span></td>
+                </tr>
+                <tr>
+                    <th>上级分组名：</th>
+                    <td><input name="sort_id" id="combotree" class="easyui-combotree combotree" data-options="url:'{:U('Admin/Links/jsonTree')}',required:true"  value="{$data.sort_id}"  style="width:200px;"></td>
+                </tr>
+                <tr>
+                    <th>链接地址：</th>
+                    <td><input type="text" name="weburl" value="{$data.weburl}" /></td>
+                </tr>
+                <tr>
+                    <th>状态：</th>
+                    <td><html:radio name="status" radios="status" checked="v_status" /></td>
+            </tr>
+            <tr>
+                <th>友情链接图片：</th>
+                <td><input type="text" id="url1" name="webpic" value="{$data.webpic}" />
+                    <input type="button" id="image1" value="选择图片" />
+                </td>
+            </tr>
+            <tr>
+                <th>文字简介：</th>
+                <td><input type="text" name="remark" value="{$data.remark}" /></td>
+            </tr>
+            <tr>
+                <th>{:L("orderby")}：</th><td><input type="text" name="myorder" value="{$data.myorder}" /></td>
+            </tr>
+            </tbody>
+        </table></div>
+</form>
+<script>
+    $(function() {
+
+        KindEditor.create('#content', {
+            themeType: 'simple',
+            allowFileManager: true,
+            uploadJson: '{:U("Admin/Upload/uploadImg")}',
+            fileManagerJson: '{:U("Admin/Upload/fileManagerJson")}',
+            afterBlur: function() {
+                this.sync();
+            }
+        });
+        var editor = KindEditor.editor({
+            allowFileManager: true,
+            uploadJson: '{:U("Admin/Upload/uploadImg")}',
+            fileManagerJson: '{:U("Admin/Upload/fileManagerJson")}'
+        });
+        KindEditor('#image1').click(function() {
+            editor.loadPlugin('image', function() {
+                editor.plugin.imageDialog({
+                    imageUrl: KindEditor('#url1').val(),
+                    clickFn: function(url, title, width, height, border, align) {
+                        KindEditor('#url1').val(url);
+                        editor.hideDialog();
+                    }
+                });
+            });
+        });
+
+
+    });
+</script>

@@ -1,0 +1,52 @@
+<form action="{:U('Admin/Data/doBackup')}" class="form_dogocms" method="post">
+    <div class="division">
+        <h3>选择需要备份的数据表</h3>
+        <br/>
+        <ul class="tbname">
+            <foreach name="list" item="vo">
+                <li style="float: left;width: 30%;height: 30px;line-height: 30px;padding-left: 20px;">
+                    <input type="checkbox" class="tbbox" name="{$vo}[]" /><span style="margin: 0 20px;">{$vo}</span>
+                </li>
+            </foreach>
+            <div class="clear"></div>
+        </ul>
+        <style>
+            .checkbox{margin: 20px 0;}
+            .checkbox li{width: 100px;float: left;display: inline;height: 30px;line-height: 30px;margin: 0 10px;cursor:pointer ;text-align: center;border: 1px antiquewhite solid;}
+        </style>
+        <div class="checkbox">
+            <ul>
+                <li class="checkbox_true">全选</li>
+                <li class="checkbox_tf">反选</li>
+                <li class="checkbox_false">取消</li>
+                <div class="clear"></div>
+            </ul>
+        
+        </div>
+    </div>
+</form>
+<script>
+    $(function(){
+        //全选
+        $('.checkbox_true').click(function(){
+            $('.tbbox').each(function(){
+                $(this).attr("checked",true);
+            });
+        });
+        //反选
+        $('.checkbox_tf').click(function(){
+            $('.tbbox').each(function(){
+                $(this).attr("checked",!this.checked);
+            });
+        });
+        //取消
+        $('.checkbox_false').click(function(){
+            $('.tbbox').each(function(){
+                $(this).attr("checked",false);
+            });
+        });
+    })
+</script>
+
+
+

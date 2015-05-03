@@ -1,0 +1,42 @@
+
+<div style="background:#fafafa;padding:5px;margin-top:2px;width:350px;border:1px solid #ccc">
+    <a href="__ROOT__/" target="_blank" iconCls="icon-ok">网站首页</a>|
+    <a href="javascript:void(0)" class="dogo-js-reload" iconCls="icon-reload">更新缓存</a>
+    <a href="#" class="easyui-menubutton" menu="#mm3" iconCls="icon-ok">个人资料</a>
+    <a href="#" class="easyui-menubutton" menu="#skin" iconCls="icon-edit">skin</a>
+    <a href="http://www.qiuyuntech.com" target="_blank"  iconCls="icon-help">站点支持</a>
+</div>
+
+
+<div id="mm3" style="width:100px;">
+    <div iconCls="icon-edit"><a href="{:U('Admin/Passport/logout')}" class="">个人资料</a></div>
+    <div iconCls="icon-edit"><a href="{:U('Admin/Passport/logout')}" class="">修改密码</a></div>
+    <div iconCls="icon-undo"><a href="{:U('Admin/Passport/logout')}" class="">退出登录</a></div>
+</div>
+<div id="skin" style="width:100px;">
+    <div onclick="changeTheme('default');">default</div>
+    <div onclick="changeTheme('black');">black</div>
+    <div onclick="changeTheme('bootstrap');">bootstrap</div>
+    <div onclick="changeTheme('gray');">gray</div>
+    <div onclick="changeTheme('metro');">metro</div>
+</div>
+<script>
+    $(function () {
+        $('.dogo-js-reload').click(function () {
+            var href = "{:U('Admin/Setting/doCache')}";
+            $.ajax({
+                url: href,
+                type: 'post',
+                dataType: 'json',
+                success: function (data) {
+                    $.messager.show({
+                        title: data.msg,
+                        msg: data.msg,
+                        timeout: 5000,
+                        showType: 'slide'
+                    });
+                }
+            });
+        });
+    });
+</script>

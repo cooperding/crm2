@@ -1,0 +1,34 @@
+<footer class="dogo-footer">
+    <div class="container dogo-wp">
+        <div class="row">
+            <div class="col-md-12">
+                <nav>
+                    <volist name="navfoot" id="navlist">
+                    <a href="{$navlist.url}">{$navlist.text}</a>
+                </volist>
+                </nav>
+                <p><dogocms:cfg name="cfg_copyright"/><dogocms:cfg name="cfg_tongji"/></p>
+            </div><!--col-md-->
+        </div><!--row-->
+    </div><!--container-->
+</footer>
+
+
+<script type="text/javascript" src="__PUBLIC__{$style_common}/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__{$style_common}/v3.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__{$style_common}/js/alertify.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__{$style_common}/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="__PUBLIC__{$style_common}/js/jquery.bxslider.min.js"></script>
+
+
+
+<script>
+    $(function() {
+        $('img').addClass('img-responsive');
+        $('.bxslider').bxSlider({
+            mode: 'fade',
+            captions: true,
+            auto: true
+        });
+    });
+</script>

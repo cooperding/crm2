@@ -1,0 +1,10 @@
+<select class="form-control" name="county">
+    <option>请选择所属县/区...</option>
+    <foreach name="data" item="vo">
+        <if condition="($check_county_id eq $vo['id'])">
+            <option value="{$vo.id}" selected="selected">{$vo.name}</option>
+            <else/>
+            <option value="{$vo.id}">{$vo.name}</option>
+        </if>
+    </foreach>
+</select>

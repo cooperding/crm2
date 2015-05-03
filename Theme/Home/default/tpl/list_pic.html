@@ -1,0 +1,91 @@
+<include file="$tpl_header" />
+<div class="container dogo-wp">
+    <div class="row dogo-notice">
+        <div class="col-md-3">
+            <ul>
+
+                <li><span class="glyphicon glyphicon-volume-up"></span> <a href="#">[7-30]帐号注册协议公告</a></li>
+            </ul>
+        </div><!--col-md-->
+        <div class="col-md-3">
+            <ul>
+                <li><a href="#">帐号注册协议公告</a></li>
+            </ul>
+        </div><!--col-md-->
+        <div class="col-md-3">
+            <ul>
+                <li><a href="#">帐号注册协议公告</a></li>
+            </ul>
+        </div><!--col-md-->
+        <div class="col-md-3">
+            <ul>
+                <li><a href="#">帐号注册协议公告</a></li>
+            </ul>
+        </div><!--col-md-->
+    </div><!--row-->
+    <div class="dogo-blank"></div>
+
+    <div class="row ">
+        <div class="col-md-3">
+            <aside>
+                <div class="dogo-box">
+                    <div class="panel dogo-panel-redone">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><a href="#">全部分类</a></h3>
+                        </div>
+                        <div class="panel-body dogo-text">
+                            <ul>
+                                <li><a href="#">苹果也太粗心了！安全认证忘了更新</a></li>
+                                <li><a href="#">解决Win8.1兼容性 Sandboxie 4.10更新</a></li>
+                                <li><a href="#">苹果收购Beats波澜：消息泄露或致交易延期</a></li>
+                                <li><a href="#">苹果周边产品 带动创见策略性产品营收创新高</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div><!--dogo-box-->
+            </aside>
+            <aside>
+                <div class="dogo-box">
+                    <div class="panel dogo-panel-redone">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><a href="#">全部分类</a></h3>
+                        </div>
+                        <div class="panel-body">
+                            Panel content
+                        </div>
+                    </div>
+                </div><!--dogo-box-->
+            </aside>
+        </div><!--col-md-3-->
+        <div class="col-md-9">
+            <div class="row">
+                <foreach name="list" item="vo">
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail dogo-thumbnail">
+                            <div class="dogo-thumbnail-pic">
+                                <a href="{:U('News/Content/index',array('id'=>$vo['id']))}"><img src="{$vo.titlepic}"/></a>
+                            </div>
+                            <div class="dogo-thumbnail-footer">
+                                <h3><a href="{:U('News/Content/index',array('id'=>$vo['id']))}">{$vo.title}</a></h3>
+                                <p>{$vo.description}</p>
+                            </div>
+                        </div>
+                    </div><!--col-md-->
+                </foreach>
+
+            </div><!--row-->
+            <div class="row">
+                <div class="col-md-12">
+                    <eq name="list" value="">暂无信息</eq>
+                    <ul class="pagination dogo-pagination dogo-pagination-redone">
+                        {$page}
+                    </ul>
+                </div><!--col-md-->
+            </div><!--row-->
+        </div><!--col-md-->
+    </div><!--row-->
+</div><!--container-->
+<include file="$tpl_footer" />
+</div><!--dogo-page-->
+</body>
+</html>

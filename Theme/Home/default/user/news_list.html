@@ -1,0 +1,66 @@
+<include file="$tpl_header" />
+<div class="container">
+    <div class="dogo-blank"></div>
+    <div class="row">
+        <div class="col-md-3">
+
+            <div class="dogo-sidebar">
+                <include file="$tpl_sidebar" />
+            </div><!--dogo-sidebar-->
+        </div><!--col-md-->
+        <div class="col-md-9">
+            <div class="dogo-member">
+                <h4>我的信息列表</h4>
+                <div class="dogo-blank"></div>
+
+                <foreach name="list" item="vo" key="i">
+                    <section class="dogo-box dogo-border-all dogo-pd515 dogo-bg-white">
+                        <div class="dogo-box-header">
+                            <h5>
+                                <span class="glyphicon glyphicon-hand-right"></span> 
+                                <a href="{:U('Home/Content/index',array('id'=>$vo['id']))}" target="_blank">
+                                    {$vo.title}
+                                </a><a href="{:U('Home/Content/index',array('id'=>$vo['id']))}" title="在新页面打开" target="_blank">
+                                <span class="glyphicon glyphicon-share"></span> 点击浏览
+                            </a>
+                            
+                        </h5>
+                        <p>
+                            <span class="glyphicon glyphicon-thumbs-up"></span> 
+                            ({$vo.num_top})&nbsp;&nbsp;
+                            <span class="glyphicon glyphicon-thumbs-down"></span> 
+                            ({$vo.num_beat})&nbsp;&nbsp;
+                            <a href="{:U('Home/Content/index',array('id'=>$vo['id']))}" target="_blank" title="评论">
+                                <span class="glyphicon glyphicon-comment"></span> ({$vo.num_comment})
+                            </a>&nbsp;&nbsp;
+                            ({$vo.status})
+                        </p>
+
+                        </div>
+                        <div class="dogo-box-content">
+                        <p>
+                            {$vo.description}
+                        </p>
+                    </div><!--dogo-box-content-->
+
+                    </section><!--dogo-box-->
+                    <div class="dogo-blank"></div>
+                </foreach>
+                <ul class="pagination">
+                    {$page}
+                </ul>
+            </div><!--dogo-member-->
+
+
+
+
+        </div><!--col-md-->
+    </div><!--row-->
+    <div class="dogo-blank"></div>
+</div><!--container-->
+<include file="$tpl_footer" />
+
+</div><!--dogo-page-->
+
+</body>
+</html>

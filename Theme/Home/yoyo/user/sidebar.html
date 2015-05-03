@@ -1,0 +1,23 @@
+<div class="dogo-nav-sidebar dogo-border dogo-radius">
+    <div class="list-group ">
+        <a href="javascript:void(0)" class="list-group-item dogo-nav-header"><span class="glyphicon glyphicon-user"></span> 个人中心</a>
+        <a href="{:U('User/index')}" class="list-group-item <eq name='sidebar_active' value='index'>active</eq>"><span class="glyphicon glyphicon-cog"></span> 我的主页</a>
+        <a href="{:U('User/personal')}" class="list-group-item <eq name='sidebar_active' value='personal'>active</eq>"><span class="glyphicon glyphicon-user"></span> 个人资料</a>
+        <a href="{:U('User/email')}" class="list-group-item <eq name='sidebar_active' value='email'>active</eq>"><span class="glyphicon glyphicon-envelope"></span> 邮箱修改</a>
+        <a href="{:U('User/changePwd')}" class="list-group-item <eq name='sidebar_active' value='changepwd'>active</eq>"><span class="glyphicon glyphicon-pencil"></span> 修改密码</a>
+        <a href="javascript:void(0)" class="list-group-item dogo-nav-header"><span class="glyphicon glyphicon-cog"></span> 信息管理</a>
+        <a href="{:U('User/newsAdd')}" class="list-group-item <eq name='sidebar_active' value='news_add'>active</eq>"><span class="glyphicon glyphicon-edit"></span> 我要投稿</a>
+        <a href="{:U('User/newsList')}" class="list-group-item <eq name='sidebar_active' value='news_list'>active</eq>"><span class="glyphicon glyphicon-list-alt"></span> 我的文档<span class="badge">{$count_newslist}</span></a>
+
+        <a href="javascript:void(0)" class="list-group-item dogo-nav-header"><span class="glyphicon glyphicon-cog"></span> 商务中心</a>
+        <a href="{:U('User/ordersList')}" class="list-group-item <eq name='sidebar_active' value='orders'>active</eq>"><span class="glyphicon glyphicon-shopping-cart"></span> 我的订单<span class="badge">{$count_orderlist}</span></a>
+        <a href="{:U('User/addressList')}" class="list-group-item <eq name='sidebar_active' value='address'>active</eq>"><span class="glyphicon glyphicon-envelope"></span> 收货地址<span class="badge">{$count_address}</span></a>    
+<a href="javascript:void(0)" class="list-group-item dogo-nav-header"><span class="glyphicon glyphicon-cog"></span> 消息管理</a>
+        <a href="{:U('')}" class="list-group-item <eq name='sidebar_active' value=''>active</eq>"><span class="glyphicon glyphicon-comment"></span> 我的留言<span class="badge">9999</span></a>
+        <a href="{:U('')}" class="list-group-item <eq name='sidebar_active' value=''>active</eq>"><span class="glyphicon glyphicon-envelope"></span> 我的消息<span class="badge">42</span></a>
+        <!--    <a href="javascript:void(0)" class="list-group-item dogo-nav-header">扩展管理</a>
+            <a href="{:U('User/Index/apiList')}" class="list-group-item <eq name='sidebar_active' value='apilist'>active</eq>">api接口<span class="badge">{$count_apilist}</span></a>
+        -->
+        <a href="{:U('Passport/logout')}" class="list-group-item"><span class="glyphicon glyphicon-log-out"></span> 退出登录</a>
+    </div>
+</div><!--dogo-sidebar-nav-->

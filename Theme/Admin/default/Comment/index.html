@@ -1,0 +1,74 @@
+<table id="datagrid_comment">
+
+</table>
+<script>
+    $(function() {
+        var classId = 'comment';
+        var urljson = '{:U("Admin/Comment/jsonList")}';
+        var hrefadd = '{:U("Admin/Comment/add")}';
+        var hrefedit = '{:U("Admin/Comment/edit")}';
+        var hrefcancel = '{:U("Admin/Comment/delete")}';
+        openDatagrid(classId, urljson, hrefadd, hrefedit, hrefcancel);
+        $('#datagrid_' + classId).datagrid({
+            columns: [[
+                    {field: 'id', title: '编号', width: 30},
+                    {field: 'title', title: '标题', width: 200},
+                    {field: 'username', title: '会员', width: 50},
+                    {field: 'addtime', title: '评论时间', width: 100},
+                    {field: 'status', title: '状态', width: 50},
+                    {
+                        field: 'action',
+                        title: '操作',
+                        width: 50,
+                        formatter: function(value, row, index) {
+                            return '<img class="btn_do" src="__PUBLIC__/Easyui/themes/icons/pencil.png" onclick="ding_edit(\'' + hrefedit + '?id=' + row.id + '\',\'' + classId + '\')"  title="编辑"/>&nbsp;\n\
+<img class="btn_do" src="__PUBLIC__/Easyui/themes/icons/cancel.png" onclick="ding_cancel(\'' + row.id + '\',\'' + hrefcancel + '\',\'' + classId + '\')" title=" 删除"/>&nbsp;';
+                        }
+                    }
+                ]],
+            toolbar: [{
+                    id: 'btnedit_' + classId,
+                    text: '回复评论',
+                    iconCls: 'icon-edit',
+                    handler: function() {
+                        var ids = [];
+                        var rows = $('#datagrid_' + classId).datagrid('getSelections');
+                        for (var i = 0; i < rows.length; i++) {
+                            ids.push(rows[i].id);
+                        }
+                        if (ids == '') {
+                            $.messager.alert('信息提示', '请选择要操作的项', 'error');
+                            return false;
+                        } else if (rows.length > 1) {
+                            $.messager.alert('信息提示', '请选择一个要操作的项', 'error');
+                            return false;
+                        }
+                        var href = hrefedit + '?id=' + ids;
+                        var title = '编辑信息';
+                        openDialog(classId, href, title);
+                    }
+                }, '-', {
+                    id: 'btncanel_' + classId,
+                    text: '删除',
+                    iconCls: 'icon-cancel',
+                    handler: function() {
+                        var ids = [];
+                        var rows = $('#datagrid_' + classId).datagrid('getSelections');
+                        for (var i = 0; i < rows.length; i++) {
+                            ids.push(rows[i].id);
+                        }
+                        if (ids == '') {
+                            $.messager.alert('信息提示', '请选择要操作的项', 'error');
+                            return false;
+                        }
+                        var href = hrefcancel;
+                        var title = '删除信息';
+                        dogoDelete(ids,title,href,classId);
+
+
+                    }
+                }
+            ]//toolbar
+        });
+    });
+</script>

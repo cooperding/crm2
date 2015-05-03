@@ -1,0 +1,96 @@
+<form action="{:U('Admin/Block/update')}" class="form_dogocms" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="{$data.id}" />
+    <div class="division">
+        <table>
+            <tbody>
+            <tr>
+                <th>名称：</th>
+                <td><input type="text" name="title" value="{$data.title}" data-options="required:true" class="easyui-validatebox"/><span class="red">*</span></td>
+            </tr>
+            <tr>
+                <th>所属分类：</th>
+                <td><input name="sort_id" id="combotree" class="easyui-combotree combotree" data-options="url:'{:U('Admin/Block/jsonTree')}',required:true" value="{$data.sort_id}" style="width:200px;"></td>
+            </tr>
+            <tr>
+                <th>链接地址：</th>
+                <td><input type="text" name="url" value="{$data.url}" /></td>
+            </tr>
+            <tr>
+                <th>状态：</th>
+                <td><html:radio name="status" radios="status" checked="v_status" /></td>
+            </tr>
+            <tr>
+                <th>图片：</th>
+                <td>
+                    <input type="text" id="url1" name="title_img" value="{$data.title_img}" />
+                    <input type="button" id="image1" value="选择图片" />
+                </td>
+            </tr>
+            <if condition="$data.title_img neq ''">
+               <tr>
+                <th></th>
+                <td>
+                    <img src="{$data.title_img}" style="max-width: 300px;"/>
+                </td>
+            </tr>
+            </if>
+            
+            <tr>
+                <th>简介描述：</th>
+                <td><textarea name="description" rows="3" cols="30">{$data.description}</textarea></td>
+            </tr>
+            <tr>
+                <th>{:L("orderby")}：</th>
+                <td><input type="text" name="myorder" value="{$data.myorder}" /></td>
+            </tr>
+            <tr>
+                <th>备用字段1：</th>
+                <td><input type="text" name="field1" value="{$data.field1}" /></td>
+            </tr>
+            <tr>
+                <th>备用字段2：</th>
+                <td><input type="text" name="field2" value="{$data.field2}" /></td>
+            </tr>
+            <tr>
+                <th>备用字段3：</th>
+                <td><input type="text" name="field3" value="{$data.field3}" /></td>
+            </tr>
+            <tr>
+                <th>备用字段4：</th>
+                <td><input type="text" name="field4" value="{$data.field4}" /></td>
+            </tr>
+            <tr>
+                <th>备用字段5：</th>
+                <td><input type="text" name="field5" value="{$data.field5}" /></td>
+            </tr>
+        </tbody>
+        </table></div>
+</form>
+
+<script>
+    $(function() {
+
+        KindEditor.create('#content', {
+            themeType : 'simple',
+            allowFileManager : true,
+            uploadJson: '{:U("Admin/Upload/uploadImg")}',
+            fileManagerJson: '{:U("Admin/Upload/fileManagerJson")}',
+            afterBlur : function() {
+                this.sync();
+            }
+        });
+        KindEditor('#image1').click(function() {
+            editor.loadPlugin('image', function() {
+                editor.plugin.imageDialog({
+                    imageUrl : KindEditor('#url1').val(),
+                    clickFn : function(url, title, width, height, border, align) {
+                        KindEditor('#url1').val(url);
+                        editor.hideDialog();
+                    }
+                });
+            });
+        });
+
+
+    });
+</script>

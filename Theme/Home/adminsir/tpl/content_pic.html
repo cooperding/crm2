@@ -1,0 +1,140 @@
+<include file="$tpl_header" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__{$style}/style/superslide.css"/>
+<div class="container dogo-wp">
+    <div class="row dogo-notice">
+        <div class="col-md-3">
+            <ul>
+
+                <li><span class="glyphicon glyphicon-volume-up"></span> <a href="#">[7-30]帐号注册协议公告</a></li>
+            </ul>
+        </div><!--col-md-->
+        <div class="col-md-3">
+            <ul>
+                <li><a href="#">帐号注册协议公告</a></li>
+            </ul>
+        </div><!--col-md-->
+        <div class="col-md-3">
+            <ul>
+                <li><a href="#">帐号注册协议公告</a></li>
+            </ul>
+        </div><!--col-md-->
+        <div class="col-md-3">
+            <ul>
+                <li><a href="#">帐号注册协议公告</a></li>
+            </ul>
+        </div><!--col-md-->
+    </div><!--row-->
+    <div class="row dogo-slide">
+        <div class="col-md-12">
+
+            <div class="slider">
+
+                <div class="bd">
+                    <ul>
+
+                        <li><a target="_blank" href="http://www.superslide2.com"><img src="{$data.titlepic}" /></a></li>
+                        <li><a target="_blank" href="http://www.superslide2.com"><img src="{$data.titlepic}" /></a></li>
+                        <li><a target="_blank" href="http://www.superslide2.com"><img src="{$data.titlepic}" /></a></li>	
+                        <li><a target="_blank" href="http://www.superslide2.com"><img src="{$data.titlepic}" /></a></li>	
+
+                    </ul>
+                </div>
+
+                <div class="hd"><ul></ul></div><!-- 自动分页 -->
+
+                <div class="pnBtn prev">
+                    <span class="blackBg"></span>
+                    <a class="arrow" href="javascript:void(0)"></a>
+                </div>
+                <div class="pnBtn next">
+                    <span class="blackBg"></span>
+                    <a class="arrow" href="javascript:void(0)"></a>
+                </div>
+
+            </div>
+        </div><!--col-md-12-->
+    </div><!--row-->
+    <div class="dogo-blank"></div>
+    <div class="row">
+        <div class="col-md-12 ">
+            <ul id="myTab" class="nav nav-tabs dogo-nav-tabs-redone">
+                <li class="active"><a href="#home" data-toggle="tab">商品详情</a></li>
+                <li class=""><a href="#profile" data-toggle="tab">评价详情(30)</a></li>
+                <li class=""><a href="#profile2" data-toggle="tab">服务保障</a></li>
+                <li class=""><a href="#profile3" data-toggle="tab">如何购买</a></li>
+                <li class=""><a href="#profile4" data-toggle="tab">支付说明</a></li>
+            </ul>
+            <div id="myTabContent" class="tab-content dogo-border-all">
+                <div class="tab-pane active dogo-text dogo-pd15" id="home">
+                    <p>{$data.content}</p>
+                </div>
+                <div class="tab-pane fade" id="profile">
+                    <p>Food truck fr vero sint qui sapiente accusamus tattooed echo park.</p>
+                </div>
+                <div class="tab-pane fade" id="profile2">
+                    <p>Food truck fr vero sint qui sapiente accusamus tattooed echo park.</p>
+                </div>
+                <div class="tab-pane fade" id="profile3">
+                    <p>Food truck fr vero sint qui sapiente accusamus tattooed echo park.</p>
+                </div>
+                <div class="tab-pane fade" id="profile4">
+                    <p>Food truck fr vero sint qui sapiente accusamus tattooed echo park.</p>
+                </div>
+            </div>
+        </div><!--col-md-->
+    </div><!--row-->
+</div><!--container-->
+<include file="$tpl_footer" />
+
+</div><!--dogo-page-->
+<script type="text/javascript" src="__PUBLIC__{$style_common}/js/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript">
+    /* 把最后一个放到第一个前面，然后通过外层ul{margin-left:-980px !important; }来显示第一个 */
+    jQuery(".slider .bd li").first().before(jQuery(".slider .bd li").last());
+    /* 控制左右按钮显示 */
+    jQuery(".slider").hover(function() {
+        jQuery(this).find(".arrow").stop(true, true).fadeIn(300)
+    }, function() {
+        jQuery(this).find(".arrow").fadeOut(300)
+    });
+    /* 调用SuperSlide */
+    jQuery(".slider").slide({titCell: ".hd ul", mainCell: ".bd ul", effect: "leftLoop", autoPlay: true, vis: 3, autoPage: true, trigger: "click"});
+</script>
+
+<script>
+    $(function() {
+        $('.dogo-click-submit').click(function() {
+            var content = $('textarea[name="content-comment"]').val();
+            content = $.trim(content);
+            if (!content) {
+                Alertify.dialog.alert('评论内容不能为空，请填写评论信息！');
+                Alertify.log.error('评论内容不能为空，请填写评论信息！', 3000);
+                $('textarea[name="content-comment"]').val('');
+                return false;
+            }
+            var row_id = $('input[name="data-id"]').val();
+            var url = "{:U('Home/Ajax/commemt')}";
+            $.ajax({
+                type: "POST",
+                url: url,
+                dataType: "json",
+                data: {key_id: row_id, content: content},
+                success: function(data) {
+                    if (data.status == 0) {
+                        Alertify.log.success(data.msg, 3000);
+                        $('textarea[name="content-comment"]').val('');
+                        $('.num_comment_' + row_id).text(data.num);
+                    } else if (data.status == 1) {
+                        Alertify.log.error(data.msg, 3000);
+                    } else if (data.status == 3) {
+                        $('.dogo-dialog-login').modal('show');
+                        Alertify.log.error(data.msg, 3000);
+                    }
+                }//success
+            });
+        });
+
+    });
+</script>
+</body>
+</html>

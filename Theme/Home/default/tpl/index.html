@@ -1,0 +1,355 @@
+<include file="$tpl_header" />
+<div class="container dogo-wp">
+    <div class="row dogo-notice">
+        <dogocms:block typeid="4" limit="4" key="i">
+            <div class="col-md-3">
+                <ul>
+                    <li>
+                    <if condition="$i eq 1"><span class="glyphicon glyphicon-volume-up"></span> </if>
+                    <a href="{$block.url}" target="_blank" title="{$block.title}">{$block.title}</a>
+                    </li>
+                </ul>
+            </div><!--col-md-->
+        </dogocms:block>
+    </div><!--row-->
+    <div class="row">
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="dogo-box dogo-flash">
+                        <ul class="bxslider">
+                            <dogocms:ads typeid="1" limit="5">
+                                <li><a href="{$ads.url}" title="{$ads.name}"><img src="{$ads.pic}" alt="{$ads.name}" title="{$ads.name}"/></a></li>
+                            </dogocms:ads>
+                        </ul>
+                    </div>
+
+                </div><!--col-md-->
+                <div class="col-md-8">
+
+                    <aside>
+                        <div class="panel panel-default">
+                            <div class="panel-body dogo-motext">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="dogo-box dogo-single-text">
+                                            <dogocms:article type="all" limit="1">
+                                                <h3><a href="{:U('Home/Content/index',array('id'=>$article['id']))}" title="{$article.title}">{$article.title}</a></h3>
+                                                <p>{$article.description}</p>
+                                            </dogocms:article>
+                                        </div><!--dogo-box-->
+                                    </div><!--col-md-->
+                                </div><!--row-->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <aside>
+                                            <div class=" dogo-text">
+                                                <ul>
+                                                    <dogocms:article type="all" limit="0,2">
+                                                        <li>·<a href="{:U('Home/Content/index',array('id'=>$article['id']))}" title="{$article.title}">{$article.title}</a></li>
+                                                    </dogocms:article>
+                                                </ul>
+                                            </div>
+                                        </aside>
+                                    </div><!--col-md-->
+                                    <div class="col-md-6">
+                                        <aside>
+                                            <div class=" dogo-text">
+                                                <ul>
+                                                    <dogocms:article type="all" limit="2,4">
+                                                        <li>·<a href="{:U('Home/Content/index',array('id'=>$article['id']))}" title="{$article.title}">{$article.title}</a></li>
+                                                    </dogocms:article>
+                                                </ul>
+                                            </div>
+                                        </aside>
+                                    </div><!--col-md-->
+                                </div><!--row-->
+
+
+                            </div>
+                        </div>
+                    </aside>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="dogo-box dogo-single-text ">
+                                <dogocms:ads typeid="1" limit="1">
+                                    <a href="{$ads.url}" title="{$ads.name}"><img src="{$ads.pic}" alt="{$ads.name}" title="{$ads.name}"/></a>
+                                </dogocms:ads>
+                            </div><!--dogo-box-->
+                        </div><!--col-md-->
+                    </div><!--row-->
+                </div><!--col-md-->
+            </div><!--row-->
+
+            <div class="dogo-blank"></div>
+            <div class="row">
+                <div class="col-md-4">
+
+                    <aside>
+                        <div class="dogo-box">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><a href="{:U('Home/List/index',array('id'=>13))}">唯爱情感</a></h3>
+                                </div>
+                                <div class="panel-body dogo-text">
+                                    <ul>
+                                        <dogocms:article typeid="3" limit="2">
+                                            <li>·<a href="{:U('Home/Content/index',array('id'=>$article['id']))}" title="{$article.title}">{$article.title}</a></li>
+                                        </dogocms:article>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><!--dogo-box-->
+                    </aside>
+                    <aside>
+                        <div class="dogo-box">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><a href="#">全部分类</a></h3>
+                                </div>
+                                <div class="panel-body dogo-text">
+                                    <ul>
+                                        <dogocms:article type="all" limit="8">
+                                            <li>·<a href="{:U('Home/Content/index',array('id'=>$article['id']))}" title="{$article.title}">{$article.title}</a></li>
+                                        </dogocms:article>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><!--dogo-box-->
+                    </aside>
+                    <aside>
+                        <div class="dogo-box">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><a href="#">全部分类</a></h3>
+                                </div>
+                                <div class="panel-body dogo-text">
+                                    <ul>
+                                        <dogocms:article type="all" limit="8">
+                                            <li>·<a href="{:U('Home/Content/index',array('id'=>$article['id']))}" title="{$article.title}">{$article.title}</a></li>
+                                        </dogocms:article>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><!--dogo-box-->
+                    </aside>
+                    <aside>
+                        <div class="dogo-box">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><a href="#">全部分类</a></h3>
+                                </div>
+                                <div class="panel-body dogo-text">
+                                    <ul>
+                                        <dogocms:article type="all" limit="8">
+                                            <li>·<a href="{:U('Home/Content/index',array('id'=>$article['id']))}" title="{$article.title}">{$article.title}</a></li>
+                                        </dogocms:article>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><!--dogo-box-->
+                    </aside>
+                    <aside>
+                        <div class="dogo-box">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><a href="#">全部分类</a></h3>
+                                </div>
+                                <div class="panel-body dogo-text">
+                                    <ul>
+                                        <dogocms:article type="all" limit="8">
+                                            <li>·<a href="{:U('Home/Content/index',array('id'=>$article['id']))}" title="{$article.title}">{$article.title}</a></li>
+                                        </dogocms:article>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><!--dogo-box-->
+                    </aside>
+                </div><!--col-md-->
+                <div class="col-md-8">
+
+                    <aside>
+                        <div class="dogo-box">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><a href="#">最新文档</a></h3>
+                                </div>
+                                <div class="panel-body dogo-list-text">
+                                    <ul>
+                                        <dogocms:article type="all" limit="8">
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <a href="{:U('Home/Content/index',array('id'=>$article['id']))}" title="{$article.title}">
+                                                            <img src="{$article.titlepic}" title="{$article.title}" alt="{$article.title}" /></a>
+                                                    </div><!--col-md-->
+                                                    <div class="col-md-8">
+                                                        <h3><a href="{:U('Home/Content/index',array('id'=>$article['id']))}" title="{$article.title}">{$article.title}</a></h3>
+                                                        <h6>
+                                                            <span class="glyphicon glyphicon-refresh"></span> {$article.updatetime|date="m/d H:i",###}
+                                                            <span class="glyphicon glyphicon-list"></span> <a href="{:U('Home/List/index',array('id'=>$article['sort_id']))}">{$article.sortname}</a>
+                                                            <span class="glyphicon glyphicon-eye-open"></span> {$article.views}
+                                                        </h6>
+                                                        <p>{$article.description}</p>
+                                                    </div><!--col-md-->
+                                                </div><!--row-->
+                                            </li>
+                                        </dogocms:article>
+                                    </ul>
+                                </div>
+                            </div><!--panel-->
+                        </div><!--dogo-box-->
+                    </aside>
+                </div><!--col-md-->
+            </div><!--row-->
+
+
+
+
+
+
+
+
+
+        </div><!--col-md-->
+
+        <div class="col-md-3">
+            <aside>
+                <div class="dogo-box">
+                    <div class="panel panel-default">
+                        <div class="panel-body dogo-text">
+                            <ul>
+                                <dogocms:article type="all" limit="8">
+                                    <li>·<a href="{:U('Home/Content/index',array('id'=>$article['id']))}" title="{$article.title}">{$article.title}</a></li>
+                                </dogocms:article>
+                            </ul>
+                        </div>
+                    </div>
+                </div><!--dogo-box-->
+            </aside>
+            <aside>
+                <div class="dogo-box">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><a href="#">全部分类</a></h3>
+                        </div>
+                        <div class="panel-body dogo-text">
+                            <ul>
+                                <dogocms:article type="all" limit="8">
+                                    <li>·<a href="{:U('Home/Content/index',array('id'=>$article['id']))}" title="{$article.title}">{$article.title}</a></li>
+                                </dogocms:article>
+                            </ul>
+                        </div>
+                    </div>
+                </div><!--dogo-box-->
+            </aside>
+
+            <aside>
+
+                <dogocms:ads typeid="1" limit="1">
+                    <a href="{$ads.url}" title="{$ads.name}"><img src="{$ads.pic}" alt="{$ads.name}" title="{$ads.name}"/></a>
+                </dogocms:ads>
+
+            </aside>
+            <div class="dogo-blank"></div>
+            <aside>
+                <div class="dogo-box">
+                    <div class="panel dogo-panel-purpleone">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><a href="#">全部分类</a></h3>
+                        </div>
+                        <div class="panel-body dogo-text">
+                            <ul>
+                                <dogocms:article type="all" limit="8">
+                                    <li>·<a href="{:U('Home/Content/index',array('id'=>$article['id']))}" title="{$article.title}">{$article.title}</a></li>
+                                </dogocms:article>
+                            </ul>
+                        </div>
+                    </div>
+                </div><!--dogo-box-->
+            </aside>
+
+
+            <aside>
+                <div class="dogo-box">
+                    <div class="panel dogo-panel-pinkone">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><a href="#">全部分类</a></h3>
+                        </div>
+                        <div class="panel-body dogo-text">
+                            <ul>
+                                <dogocms:article type="all" limit="8">
+                                    <li>·<a href="{:U('Home/Content/index',array('id'=>$article['id']))}" title="{$article.title}">{$article.title}</a></li>
+                                </dogocms:article>
+                            </ul>
+                        </div>
+                    </div>
+                </div><!--dogo-box-->
+            </aside>
+            <aside>
+                <div class="dogo-box">
+                    <div class="panel dogo-panel-yellowone">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><a href="#">全部分类</a></h3>
+                        </div>
+                        <div class="panel-body dogo-text">
+                            <ul>
+                                <dogocms:article type="all" limit="8">
+                                    <li>·<a href="{:U('Home/Content/index',array('id'=>$article['id']))}" title="{$article.title}">{$article.title}</a></li>
+                                </dogocms:article>
+                            </ul>
+                        </div>
+                    </div>
+                </div><!--dogo-box-->
+            </aside>
+            <aside>
+                <div class="dogo-box">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><a href="#">全部分类</a></h3>
+                        </div>
+                        <div class="panel-body dogo-text">
+                            <ul>
+                                <dogocms:article type="all" limit="8">
+                                    <li>·<a href="{:U('Home/Content/index',array('id'=>$article['id']))}" title="{$article.title}">{$article.title}</a></li>
+                                </dogocms:article>
+                            </ul>
+                        </div>
+                    </div>
+                </div><!--dogo-box-->
+            </aside>
+
+
+        </div><!--col-md-->
+
+    </div><!--row-->
+</div><!--container-->
+
+<div class="container dogo-wp">
+    <div class="row">
+        <div class="col-md-12">
+            <aside class="dogo-box dogo-border-all dogo-pd515 dogo-bg-white">
+                <div class="dogo-box-header">
+                    友情链接
+                </div>
+                <div class="dogo-box-content dogo-links">
+
+                    <dogocms:links >
+                        <a href="{$links.weburl}" target="_blank" title="{$links.webname}">{$links.webname}</a>
+                    </dogocms:links>
+
+                </div><!--dogo-box-content-->
+                <div class="dogo-box-footer">
+
+                </div><!--dogo-box-footer-->
+            </aside><!--dogo-box-->
+        </div><!--col-md-->
+    </div><!--row-->
+</div><!--container-->
+<div class="dogo-blank"></div>
+<include file="$tpl_footer" />
+
+</div><!--dogo-page-->
+
+</body>
+</html>

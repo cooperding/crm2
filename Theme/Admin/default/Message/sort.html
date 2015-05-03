@@ -1,0 +1,33 @@
+<table id="datagrid_message_sort" class="message_sort">
+
+</table>
+
+<script>
+    $(function() {
+        var classId = 'message_sort';
+        var hrefadd = '{:U("Admin/Message/sortadd")}';
+        var hrefedit = '{:U("Admin/Message/sortedit")}';
+        var hrefcancel = '{:U("Admin/Message/sortdelete")}';
+        var urljson = '{:U("Admin/Message/sortJson")}';
+        openDatagrid(classId, urljson, hrefadd, hrefedit, hrefcancel);
+        $('#datagrid_' + classId).datagrid({
+            columns: [[
+                    {field: 'id', title: 'ID', width: 50, align: 'center'},
+                    {field: 'ename', title: '标题', width: 200},
+                    {field: 'status', title: '状态', width: 50},
+                    //{field:'parent_id',title:'parent_id',width:200},
+                    {
+                        field: 'action',
+                        title: '动作',
+                        width: 50,
+                        formatter: function(value, row, index) {
+                            return '<img class="btn_do" src="__PUBLIC__/Easyui/themes/icons/pencil.png" onclick="ding_edit(\'' + hrefedit + '?id=' + row.id + '\',\'' + classId + '\')"  title="编辑"/>&nbsp;\n\
+<img class="btn_do" src="__PUBLIC__/Easyui/themes/icons/cancel.png" onclick="ding_cancel(\'' + row.id + '\',\'' + hrefcancel + '\',\'' + classId + '\')" title=" 删除"/>&nbsp;';
+                        }
+                    }
+                ]]
+        });
+
+
+    });
+</script>
