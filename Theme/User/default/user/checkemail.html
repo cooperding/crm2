@@ -1,0 +1,25 @@
+<include file="$tpl_header" />
+<div class="container">
+    <div class="dogo-blank"></div>
+    <div class="row">
+        <div class="col-md-12 ">
+            <div class="dogo-member">
+                <h4>邮箱验证</h4>
+                <div class="dogo-blank"></div>
+
+                <h4>
+                    <if condition="$data.status eq '0'">
+                        <p style="color: #096;">{$data.msg}</p>
+                        <else />
+                        <p style="color: #f00;">{$data.msg}</p>
+                    </if>
+                </h4>
+            </div><!--dogo-member-->
+        </div><!--col-md-->
+    </div><!--row-->
+</div><!--container-->
+<include file="$tpl_footer" />
+
+</div><!--dogo-page-->
+</body>
+</html>

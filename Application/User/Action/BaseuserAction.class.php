@@ -11,9 +11,9 @@
  * @package  Controller
  * @todo 完善更多方法
  */
-namespace Home\Action;
+namespace User\Action;
 use Think\Action;
-class BaseuserAction extends BasehomeAction {
+class BaseuserAction extends BasecommAction {
 
     //初始化
     function _initialize() {
@@ -25,19 +25,7 @@ class BaseuserAction extends BasehomeAction {
         parent::_initialize();//继承父级
     }
 
-    /*
-     * getNewsListCount
-     * 获取apiList数量
-     * 
-     */
-
-    public function getNewsListCount() {
-        $m = D('Title');
-        $uid = session('LOGIN_M_ID');
-        $condition['members_id'] = array('eq', $uid);
-        $count = $m->where($condition)->count();
-        return $count;
-    }
+   
 
 }
 

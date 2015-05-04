@@ -1,0 +1,83 @@
+<include file="$tpl_header" />
+<div class="container">
+    <div class="dogo-blank"></div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="dogo-sidebar">
+                <include file="$tpl_sidebar" />
+            </div><!--dogo-sidebar-->
+        </div><!--col-md-->
+        <div class="col-md-9">
+            <div class="dogo-member">
+                <h4>邮箱管理</h4>
+                <div class="dogo-blank"></div>
+                <form class="form-horizontal" role="form" action="{:U('User/Index/doEmail')}" method="post">
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-3 control-label input-lg">邮箱状态：</label>
+                        <div class="col-sm-9">
+                            <eq name="data.email_status" value="20">
+                            <span class="btn btn-success">已认证</span>
+                            <else/>
+                            <span class="btn btn-danger">未认证</span>
+                            <span class="btn btn-info" data-toggle="modal" data-target="#dialog_emailauth">我要认证</span>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="dialog_emailauth" tabindex="-1" role="dialog" aria-labelledby="dialog_emailauth" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="myModalLabel">邮箱验证</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h5>{$data.email}</h5>
+                                            <div class="dogo-blank"></div>
+                                            <span class="btn btn-info click_emailauth">发送邮件</span>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal --> 
+
+                            </eq>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-3 control-label input-lg">邮箱：</label>
+                        <div class="col-sm-9">
+                            <input type="email" name="email" class="form-control input-lg" id="inputEmail" placeholder="邮箱" value="{$data.email}">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-default col-lg-12 btn-lg">修改邮箱</button>
+                </form>
+            </div><!--dogo-member-->
+        </div><!--col-md-->
+    </div><!--row-->
+    <div class="dogo-blank"></div>
+</div><!--container-->
+<include file="$tpl_footer" />
+<script>
+    $(function() {
+        $('.click_emailauth').click(function() {
+            $.ajax({
+                type: "POST",
+                url: '{:U("User/Index/authEmail")}',
+                dataType: "json",
+                success: function(data) {
+                    if (data.status == 1) {
+                        alert(data.msg);
+                    } else {
+                        alert(data.msg);
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+</div><!--dogo-page-->
+
+</body>
+</html>

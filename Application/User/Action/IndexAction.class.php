@@ -11,9 +11,9 @@
  * @package  Controller
  * @todo 完善更多方法
  */
-namespace Home\Action;
+namespace User\Action;
 use Think\Action;
-class UserAction extends BaseuserAction {
+class IndexAction extends BaseuserAction {
 
     /**
      * index

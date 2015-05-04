@@ -1,0 +1,135 @@
+<include file="$tpl_header" />
+<div class="container">
+    <div class="dogo-blank"></div>
+    <div class="row">
+        <div class="col-md-3">
+
+            <div class="dogo-sidebar">
+                <include file="$tpl_sidebar" />
+            </div><!--dogo-sidebar-->
+        </div><!--col-md-->
+        <div class="col-md-9">
+            <div class="dogo-member">
+                <h4>添加收货地址</h4>
+                <div class="dogo-blank"></div>
+
+                <form class="form-horizontal " role="form" action="{:U('User/Index/addressInsert')}" method="post">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">收货人姓名：</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="name" class="form-control input-lg" id="inputName" placeholder="收货人姓名" value="{$data.username}" required="required">
+                        </div>
+                    </div><!--form-group-->
+                    <div class="form-group">
+                        <label for="inputTelphone" class="col-sm-2 control-label">手机号码：</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="telphone" class="form-control input-lg" id="inputTelphone" placeholder="手机号码" value="{$data.username}" required="required">
+                        </div>
+                    </div><!--form-group-->
+                    <div class="form-group dogo-click-area">
+                        <label class="col-sm-2 control-label">所在地区：</label>
+                        <div class="col-sm-10">
+
+
+                            <div class="col-sm-3">
+                                <div class="dogo-ajax-province">
+
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="dogo-ajax-city">
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="dogo-ajax-county">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--form-group-->
+                    <div class="form-group">
+                        <label for="inputZipcode" class="col-sm-2 control-label">邮政编码：</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="zipcode" class="form-control input-lg" id="inputZipcode" placeholder="邮政编码" value="{$data.username}" required="required">
+                        </div>
+                    </div><!--form-group-->
+                    <div class="form-group">
+                        <label for="inputAddress" class="col-sm-2 control-label">街道地址：</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control input-lg" name="address" id="inputAddress" rows="3" placeholder="街道地址" required="required">{$data.signature}</textarea>
+                        </div>
+                    </div><!--form-group-->
+
+
+                    <div class="form-group">
+                        <label for="inputIsdefault" class="col-sm-2 control-label">设为默认地址：</label>
+                        <div class="col-sm-10">
+                            <div class="checkbox">
+                                <label>
+                                    <input name="is_default" type="checkbox" id="inputIsdefault"> 设置为默认收货地址
+                                </label>
+                            </div>
+                        </div>
+                    </div><!--form-group-->
+                    <div class="form-group">
+                        <div class=" col-sm-12">
+                            <button type="submit" class="btn btn-default col-lg-12 btn-lg">提交</button>
+                        </div>
+                    </div>
+                </form>
+            </div><!--dogo-member-->
+
+
+
+
+        </div><!--col-md-->
+    </div><!--row-->
+</div><!--container-->
+<include file="$tpl_footer" />
+
+</div><!--dogo-page-->
+<script>
+    $(function () {
+        //获取省份
+        var url = '{:U("User/Index/getArea")}';
+        $.ajax({
+            type: "post",
+            dataType: 'html',
+            url: url,
+            data: {type: 'province'},
+            success: function (data) {
+                $('.dogo-ajax-province').html(data);
+            }
+        });
+        //获取城市
+        $('.dogo-click-area').on('change', 'select[name="province"]', function () {
+            var province_id = $(this).val();
+            $.ajax({
+                type: "post",
+                dataType: 'html',
+                url: url,
+                data: {type: 'city', province_id: province_id},
+                success: function (data) {
+                    $('.dogo-ajax-city').html(data);
+                    $('.dogo-ajax-county').html('');
+                }
+            });
+        });
+        //获取县区
+        $('.dogo-click-area').on('change', 'select[name="city"]', function () {
+            var city_id = $(this).val();
+            $.ajax({
+                type: "post",
+                dataType: 'html',
+                url: url,
+                data: {type: 'county', city_id: city_id},
+                success: function (data) {
+                    $('.dogo-ajax-county').html(data);
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-<include file="Public:header" />
+<include file="$tpl_header" />
 
 <body class="easyui-layout layout_index">
     <script type="text/javascript">
@@ -49,7 +49,7 @@
             <div class="admincon fleft"></div>
             <div class="adminmember fright">
 
-                <include file="top" />
+               
             </div>
             <div class="clear"></div>
         </div><!--admintop-->
@@ -57,7 +57,7 @@
     <div data-options="region:'west',split:true,title:'{:L('menu_name')}'" style="width:200px;">
         <div class="easyui-accordion sider" data-options="fit:true,border:false">
             <!--//左侧菜单导航-->
-            <include file="lefter" />
+            
             <!--//左侧菜单导航-->
         </div><!--accordion-->
 
@@ -65,12 +65,14 @@
     <div data-options="region:'east',split:true,collapsed:true,title:'公告及官方微博'" style="width:220px;padding:10px;">
         <include file="right" />
     </div>
-    <div data-options="region:'south',split:false,border:false" style="height:50px;padding:10px; text-align:center;">dingcms.com/qiuyuntech.com版权<br/>qiuyuntech.com开发团队</div>
+    <div data-options="region:'south',split:false,border:false" style="height:50px;padding:10px; text-align:center;">
+        <dogocms:cfg name="cfg_copyright"/>
+    </div>
     <!--//主体内容部分-->
     <div data-options="region:'center'" class="indexcenter" title="内容管理系统">
         <div id="tabs_index" class="easyui-tabs"  fit="true" border="false"  >
             <div title="{:L('home')}" style="overflow:hidden; " >
-                <include file="windows"/>
+                
             </div>
 
             <div title="{:L('welcome')}" style="padding:10px; " data-options="closable:true" >
@@ -81,6 +83,6 @@
     <!--//主体内容部分-->
     <div id="dialog_cms" data-options="iconCls:'icon-save'">
     </div>
-<include file="Public:footer" />
+<include file="$tpl_footer" />
 </body>
 </html>
