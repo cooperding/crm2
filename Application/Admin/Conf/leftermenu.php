@@ -8,6 +8,9 @@ $array = array(
                     array('label' => L('menu_nav_head'), 'type' => 'nav_head', 'link' => __MODULE__ . '/NavHead/index'),
                     array('label' => L('menu_nav_foot'), 'type' => 'nav_foot', 'link' => __MODULE__ . '/NavFoot/index')
                 )),
+        array('label' => L('项目菜单'), 'type' => 'pro_name', 'items' => array(
+                    array('label' => L('菜单列表'), 'type' => 'user_menu_name', 'link' => __MODULE__ . '/ProjectMenu/index')
+                )),
             array('label' => L('menu_data_name'), 'type' => 'data_name', 'items' => array(
                     array('label' => L('menu_data_recover'), 'type' => 'datarecover', 'rel' => 'dialog', 'link' => __MODULE__ . '/Data/recover'),
                     array('label' => L('menu_data_backup'), 'type' => 'databackup', 'rel' => 'dialog', 'link' => __MODULE__ . '/Data/backup'),

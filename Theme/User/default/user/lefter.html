@@ -1,0 +1,31 @@
+
+<div title="工作台" data-options="iconCls:'icon-mini-add'" style="padding:10px;">
+    <ul class="easyui-tree" data-options="animate:true">
+        <foreach name='menu' item='list' key='skey'>
+            <li data-options="state:'closed'">
+                <span>{$list.text}</span>
+                <ul>
+                    <foreach name='list.children' item='sub_list' key='sskey'>
+                        <li><a href="javascript:viod(0);" cmshref="{$sub_list.url}" type="{$sub_list.type}" rel="{$sub_list.rel}">{$sub_list.text}</a></li>
+                    </foreach>
+                </ul>
+            </li>
+        </foreach>
+    </ul>
+</div><!--waiceng-->
+
+
+<div title="个人中心" data-options="iconCls:'icon-mini-add'" style="padding:10px;">
+    <ul class="easyui-tree" data-options="animate:true">
+
+        <li data-options="state:'closed'">
+            <span>个人信息</span>
+            <ul>
+                <li><a href="javascript:viod(0);" cmshref="{$sslist.link}" type="{$sslist.type}" rel="{$sslist.rel}">个人设置</a></li>
+                <li><a href="javascript:viod(0);" cmshref="{$sslist.link}" type="{$sslist.type}" rel="{$sslist.rel}">修改密码</a></li>
+                <li><a href="javascript:viod(0);" cmshref="{$sslist.link}" type="{$sslist.type}" rel="{$sslist.rel}">修改头像</a></li>
+            </ul>
+        </li>
+
+    </ul>
+</div><!--waiceng-->

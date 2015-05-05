@@ -32,11 +32,21 @@ class IndexAction extends BaseuserAction {
         $data['addtime'] = session('LOGIN_M_ADDTIME');
         $data_signature = $m->field('signature')->where($condition)->find();
         $data['signature'] = $data_signature['signature'];
+
+        $p = D('ProjectMenu');
+        $condition_menu['status'] = array('eq',20);
+        $tree = $p->where($condition_menu)->select();
+        $qiuyun = new \Org\Util\Qiuyun;
+        $array = $qiuyun->list_to_tree($tree, 'id', 'parent_id', 'children');
+//        echo '<pre>';
+//        print_r($array);
+//        exit;
         $skin = $this->skin; //获取前台主题皮肤名称
         $tpl_user = $this->tpl_user; //获取主题皮肤会员模板名称
         $this->assign('title', '会员中心');
         $this->assign('sidebar_active', 'index');
         $this->assign('data', $data);
+        $this->assign('menu', $array);
         $this->theme($skin)->display($tpl_user . 'index');
     }
 
