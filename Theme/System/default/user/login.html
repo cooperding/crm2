@@ -1,0 +1,25 @@
+<include file="$tpl_header" />
+<div class="container">
+    <div class="dogo-blank"></div>
+    <div class="row">
+        <div class="col-md-12 ">
+            <div class="dogo-box">
+                <form class="form-horizontal" role="form" action="{:U('System/Passport/checkLogin')}" method="post">
+                    <div class="form-group">
+                        <label for="pwdLogin" class="col-sm-2 control-label input-lg">密码：</label>
+                        <div class="col-sm-10">
+                            <input type="password" name="pwd" class="form-control input-lg" id="pwdLogin" placeholder="密码" required="required">
+                        </div>
+                    </div>
+                    <div class="dogo-blank"></div>
+                    <button type="submit" class=" btn btn-gray col-lg-12 btn-lg ">登录</button>
+                </form>
+            </div><!--dogo-box-->
+        </div><!--col-md-->
+    </div><!--row-->
+    <div class="dogo-blank"></div>
+</div><!--container-->
+<include file="$tpl_footer" />
+</div><!--dogo-page-->
+</body>
+</html>

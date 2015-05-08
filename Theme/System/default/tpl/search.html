@@ -1,0 +1,50 @@
+<include file=":header" />
+<div class="blank"></div>
+<div class="box wp">
+    <div class="place placebd">
+        <h3>当前位置：<a href="/">首页</a>&gt;&gt;</h3>
+    </div><!--place-->
+</div><!--box-->
+<div class="blank"></div>
+<div class="block wp">
+    <div class="blockL f_right">
+<include file=":sider" />
+
+    </div><!--blockL-->
+
+    <div class="blockLA f_left">
+        <div class="box">
+            <div class="common listbd list">
+                <div class="common_top commontopbd">
+                    <div class="ctop_l f_left"><span>{$words}</span>搜索结果</div>
+                    <div class="ctop_m f_left"></div>
+                    <div class="ctop_r f_right"><a href="#"></a></div>
+                    <div class="clear"></div>
+                </div><!--common_top-->
+                <div class="common_cont listnews">
+                <foreach name="dogocms" item="dogocms">
+                    <dl>
+                        <dt>
+                        <a href="__APP__/Content/?id={$dogocms.id}">{$dogocms.title}</a>
+                        </dt>
+                        <dd>{$dogocms.dwend1}</dd>
+                        <dd>分类: <a href="__APP__/List/?id={$dogocms.sort_id}">{$dogocms.sortname}</a>   [{$dogocms.addtime|date="Y-m-d H:i:s",###}]</dd>
+                    </dl>
+               </foreach>
+
+                    <div class="pagelist">{$page}</div><!--pagelist-->
+                </div><!--common_cont-->
+            </div><!--common-->
+
+        </div><!--box-->
+    </div><!--blockFL-->
+    <div class="clear"></div>
+</div><!--block-->
+
+
+
+
+
+<include file=":footer" />
+</body>
+</html>

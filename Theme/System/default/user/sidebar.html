@@ -1,0 +1,13 @@
+<div class="dogo-nav-sidebar dogo-border dogo-radius">
+    <div class="list-group ">
+        <a href="javascript:void(0)" class="list-group-item dogo-nav-header"><span class="glyphicon glyphicon-user"></span> 团队中心</a>
+        <a href="{:U('System/Index/index')}" class="list-group-item <eq name='sidebar_active' value='index'>active</eq>"><span class="glyphicon glyphicon-cog"></span> 我的主页</a>
+        <a href="{:U('System/Index/personal')}" class="list-group-item <eq name='sidebar_active' value='personal'>active</eq>"><span class="glyphicon glyphicon-user"></span> 我的团队（子部门）</a>
+        <a href="{:U('System/Index/email')}" class="list-group-item <eq name='sidebar_active' value='email'>active</eq>"><span class="glyphicon glyphicon-envelope"></span> 团队人员</a>
+        <a href="{:U('System/Index/changePwd')}" class="list-group-item <eq name='sidebar_active' value='changepwd'>active</eq>"><span class="glyphicon glyphicon-pencil"></span> </a>
+        <a href="javascript:void(0)" class="list-group-item dogo-nav-header"><span class="glyphicon glyphicon-cog"></span> 系统管理</a>
+        <a href="{:U('System/Index/newsAdd')}" class="list-group-item <eq name='sidebar_active' value='news_add'>active</eq>"><span class="glyphicon glyphicon-edit"></span> 权限管理</a>
+        <a href="{:U('System/Index/newsList')}" class="list-group-item <eq name='sidebar_active' value='news_list'>active</eq>"><span class="glyphicon glyphicon-list-alt"></span> 应用设置<span class="badge">{$count_newslist}</span></a>
+
+    </div>
+</div><!--dogo-sidebar-nav-->

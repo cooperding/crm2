@@ -12,7 +12,7 @@
  * @todo 完善更多方法
  */
 
-namespace User\Action;
+namespace System\Action;
 
 use Think\Action;
 
@@ -20,20 +20,15 @@ class BasecommAction extends Action {
 
     //初始化
     function _initialize() {
-        $skin = $this->getSkin('cfg_skin_user'); //获取前台主题皮肤名称
+        $skin = $this->getSkin('cfg_skin_system'); //获取前台主题皮肤名称
         $this->skin = $skin;
-        $tpl_home = $this->tpl_home = C('TPL_HOME');
+        $tpl_home = $this->tpl_home = C('TPL_SYSTEM');
         $tpl_user = $this->tpl_user = C('TPL_USER');
-        $navhead = R('Common/System/getNav', array('header')); //导航菜单
-        $navfoot = R('Common/System/getNav', array('footer')); //导航菜单
-        $this->assign('navhead', $navhead);
-        $this->assign('navfoot', $navfoot);
         $this->assign('style_common', '/Common');
         $this->assign('style', '/Theme' . __MODULE__ . '/' . $skin . '/style');
-        $this->assign('tpl_header', './Theme' . __MODULE__ . '/' . $skin . '/' . $tpl_home . 'header.html');
-        $this->assign('tpl_footer', './Theme' . __MODULE__ . '/' . $skin . '/' . $tpl_home . 'footer.html');
-        $this->assign('tpl_left', './Theme' . __MODULE__ . '/' . $skin . '/' . $tpl_user . 'lefter.html');
-        $this->assign('tpl_top', './Theme' . __MODULE__ . '/' . $skin . '/' . $tpl_user . 'top.html');
+        $this->assign('tpl_header', './Theme' . __MODULE__ . '/' . $skin . '/' . $tpl_home . '/header.html');
+        $this->assign('tpl_footer', './Theme' . __MODULE__ . '/' . $skin . '/' . $tpl_home . '/footer.html');
+        $this->assign('tpl_sidebar', './Theme' . __MODULE__ . '/' . $skin . '/' . $tpl_user . 'sidebar.html');
     }
 
     /*
@@ -43,7 +38,7 @@ class BasecommAction extends Action {
      */
 
     public function getSkin($str) {
-        $str = $str ? $str : 'cfg_skin_user';
+        $str = $str ? $str : 'cfg_skin_system';
         $skin = R('Common/System/getCfg', array($str));
         if (!$skin) {
             $skin = C('DEFAULT_THEME');
